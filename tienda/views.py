@@ -4,6 +4,7 @@ from urllib import request
 from django.shortcuts import render,redirect
 from django.db.models import Q
 from tienda.models import publicaciones, imagenes
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def verproductos(request):
@@ -22,16 +23,19 @@ def verproductos(request):
         productos=0
     print (productos)
     return render(request, "productos.html", {'nombre':'Victor','nombre_completo':'Victor Briñez','id_usuario':'1','publicaciones':todaspublicaciones,'filas':sucesion,'productos':productos})
-    
+
+@login_required(login_url="/login")
 def add_publicacion(request):
     return render(request, "addproducto.html")
 
+@login_required(login_url="/login")
 def subida(request):
     return render(request, "subida.html")
-
+@login_required(login_url="/login")
 def add_imagenes(request):
     return render(request, "addimagenes.html")
 
+@login_required(login_url="/login")
 def agregar_publicacion(request):
     ultimo = publicaciones.objects.all().count()
     if (ultimo==0) or (ultimo==''):

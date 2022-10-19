@@ -36,11 +36,15 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbar">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="nav-link page-scroll" href="/#page-top">Home</a></li>
+                                <li><a class="nav-link page-scroll" href="/blog/home">Blog</a></li>
+                                <li><a class="nav-link page-scroll" href="/tienda/verproducto">Tienda</a></li>
                                 <li><a class="nav-link page-scroll" href="/#features">Pages</a></li>
                                 <li><a class="nav-link page-scroll" href="/#team">Nosotros</a></li>
-                                <li><a class="nav-link page-scroll" href="/login">Login</a></li>
-                                <li><a class="nav-link page-scroll" href="/#pricing">SingUp</a></li>
-                                
+                                {% if request.user.is_authenticated %}
+                                    <li><a class="nav-link page-scroll" href="/logout">Logout</a></li>
+                                {% else %}
+                                    <li><a class="nav-link page-scroll" href="/login">Login</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

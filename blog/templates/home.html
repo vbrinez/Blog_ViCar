@@ -1,6 +1,6 @@
 {% extends "base_tienda.html" %}
-{% if user.is_authenticated %}
-  {% load static %}
+
+{% load static %}
 
 {% block title %}
     Blog | Publicaciones
@@ -14,18 +14,20 @@
     </div>
 {% endblock %}
 
-{% block imagen %}
-
-{% endblock %}
-
 {% block body %}
-    <div class="input-group rounded">
-        <form method="get">
-            <input type="text" id="busqueda" name="busqueda" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="{{request.GET.busqueda}}" />
-            <button type="submit">Buscar</button>
-            </span>
-        </form>
-    </div>
+    
+    <form method="get">
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="input-group m-b">
+                    <span class="input-group-prepend">
+                        <button type="submit" class="btn btn-primary">Buscar</button> 
+                    </span> 
+                    <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="{{request.GET.busqueda}}" />
+                </div>
+            </div>
+        </div>
+    </form>
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -55,8 +57,4 @@
         </div>
     </div>
 {% endblock %}
-{% else %}
-  <p>Debe hacer login</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
 
